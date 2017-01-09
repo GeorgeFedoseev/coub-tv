@@ -7,6 +7,9 @@
  */
 
 #import "SDWebImageCompat.h"
+
+#if SD_UIKIT || SD_MAC
+
 #import "SDWebImageManager.h"
 
 /**
@@ -26,16 +29,15 @@
  
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
  
-    if (cell == nil)
-    {
+    if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier]
                  autorelease];
     }
  
-    // Here we use the provided setImageWithURL: method to load the web image
+    // Here we use the provided sd_setImageWithURL: method to load the web image
     // Ensure you use a placeholder image otherwise cells will be initialized with no image
-    [cell.imageView setImageWithURL:[NSURL URLWithString:@"http://example.com/image.jpg"]
-                   placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@"http://example.com/image.jpg"]
+                      placeholderImage:[UIImage imageNamed:@"placeholder"]];
  
     cell.textLabel.text = @"My Text";
     return cell;
@@ -48,104 +50,147 @@
 /**
  * Set the imageView `image` with an `url`.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
  * @param url The url for the image.
  */
-- (void)setImageWithURL:(NSURL *)url;
+- (void)sd_setImageWithURL:(nullable NSURL *)url;
 
 /**
  * Set the imageView `image` with an `url` and a placeholder.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
- * @param url The url for the image.
+ * @param url         The url for the image.
  * @param placeholder The image to be set initially, until the image request finishes.
- * @see setImageWithURL:placeholderImage:options:
+ * @see sd_setImageWithURL:placeholderImage:options:
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
+- (void)sd_setImageWithURL:(nullable NSURL *)url
+          placeholderImage:(nullable UIImage *)placeholder;
 
 /**
  * Set the imageView `image` with an `url`, placeholder and custom options.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
- * @param url The url for the image.
+ * @param url         The url for the image.
  * @param placeholder The image to be set initially, until the image request finishes.
- * @param options The options to use when downloading the image. @see SDWebImageOptions for the possible values.
+ * @param options     The options to use when downloading the image. @see SDWebImageOptions for the possible values.
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options;
+- (void)sd_setImageWithURL:(nullable NSURL *)url
+          placeholderImage:(nullable UIImage *)placeholder
+                   options:(SDWebImageOptions)options;
 
 /**
  * Set the imageView `image` with an `url`.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
- * @param url The url for the image.
- * @param completedBlock A block called when operation has been completed. This block as no return value
+ * @param url            The url for the image.
+ * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache or from the network.
+ *                       The fourth parameter is the original image url.
  */
-- (void)setImageWithURL:(NSURL *)url completed:(SDWebImageCompletedBlock)completedBlock;
+- (void)sd_setImageWithURL:(nullable NSURL *)url
+                 completed:(nullable SDExternalCompletionBlock)completedBlock;
 
 /**
  * Set the imageView `image` with an `url`, placeholder.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
- * @param url The url for the image.
- * @param placeholder The image to be set initially, until the image request finishes.
- * @param completedBlock A block called when operation has been completed. This block as no return value
+ * @param url            The url for the image.
+ * @param placeholder    The image to be set initially, until the image request finishes.
+ * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache or from the network.
+ *                       The fourth parameter is the original image url.
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(SDWebImageCompletedBlock)completedBlock;
+- (void)sd_setImageWithURL:(nullable NSURL *)url
+          placeholderImage:(nullable UIImage *)placeholder
+                 completed:(nullable SDExternalCompletionBlock)completedBlock;
 
 /**
  * Set the imageView `image` with an `url`, placeholder and custom options.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
- * @param url The url for the image.
- * @param placeholder The image to be set initially, until the image request finishes.
- * @param options The options to use when downloading the image. @see SDWebImageOptions for the possible values.
- * @param completedBlock A block called when operation has been completed. This block as no return value
+ * @param url            The url for the image.
+ * @param placeholder    The image to be set initially, until the image request finishes.
+ * @param options        The options to use when downloading the image. @see SDWebImageOptions for the possible values.
+ * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache or from the network.
+ *                       The fourth parameter is the original image url.
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDWebImageCompletedBlock)completedBlock;
+- (void)sd_setImageWithURL:(nullable NSURL *)url
+          placeholderImage:(nullable UIImage *)placeholder
+                   options:(SDWebImageOptions)options
+                 completed:(nullable SDExternalCompletionBlock)completedBlock;
 
 /**
  * Set the imageView `image` with an `url`, placeholder and custom options.
  *
- * The downloand is asynchronous and cached.
+ * The download is asynchronous and cached.
  *
- * @param url The url for the image.
- * @param placeholder The image to be set initially, until the image request finishes.
- * @param options The options to use when downloading the image. @see SDWebImageOptions for the possible values.
- * @param progressBlock A block called while image is downloading
- * @param completedBlock A block called when operation has been completed. This block as no return value
+ * @param url            The url for the image.
+ * @param placeholder    The image to be set initially, until the image request finishes.
+ * @param options        The options to use when downloading the image. @see SDWebImageOptions for the possible values.
+ * @param progressBlock  A block called while image is downloading
+ *                       @note the progress block is executed on a background queue
+ * @param completedBlock A block called when operation has been completed. This block has no return value
  *                       and takes the requested UIImage as first parameter. In case of error the image parameter
  *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
- *                       indicating if the image was retrived from the local cache of from the network.
+ *                       indicating if the image was retrieved from the local cache or from the network.
+ *                       The fourth parameter is the original image url.
  */
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletedBlock)completedBlock;
+- (void)sd_setImageWithURL:(nullable NSURL *)url
+          placeholderImage:(nullable UIImage *)placeholder
+                   options:(SDWebImageOptions)options
+                  progress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
+                 completed:(nullable SDExternalCompletionBlock)completedBlock;
+
+/**
+ * Set the imageView `image` with an `url` and optionally a placeholder image.
+ *
+ * The download is asynchronous and cached.
+ *
+ * @param url            The url for the image.
+ * @param placeholder    The image to be set initially, until the image request finishes.
+ * @param options        The options to use when downloading the image. @see SDWebImageOptions for the possible values.
+ * @param progressBlock  A block called while image is downloading
+ *                       @note the progress block is executed on a background queue
+ * @param completedBlock A block called when operation has been completed. This block has no return value
+ *                       and takes the requested UIImage as first parameter. In case of error the image parameter
+ *                       is nil and the second parameter may contain an NSError. The third parameter is a Boolean
+ *                       indicating if the image was retrieved from the local cache or from the network.
+ *                       The fourth parameter is the original image url.
+ */
+- (void)sd_setImageWithPreviousCachedImageWithURL:(nullable NSURL *)url
+                                 placeholderImage:(nullable UIImage *)placeholder
+                                          options:(SDWebImageOptions)options
+                                         progress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
+                                        completed:(nullable SDExternalCompletionBlock)completedBlock;
+
+#if SD_UIKIT
+
+#pragma mark - Animation of multiple images
 
 /**
  * Download an array of images and starts them in an animation loop
  *
- *@param arrayOfURLs An array of NSURL
+ * @param arrayOfURLs An array of NSURL
  */
-- (void)setAnimationImagesWithURLs:(NSArray *)arrayOfURLs;
+- (void)sd_setAnimationImagesWithURLs:(nonnull NSArray<NSURL *> *)arrayOfURLs;
 
-/**
- * Cancel the current download
- */
-- (void)cancelCurrentImageLoad;
+- (void)sd_cancelCurrentAnimationImagesLoad;
 
-- (void)cancelCurrentArrayLoad;
+#endif
 
 @end
+
+#endif

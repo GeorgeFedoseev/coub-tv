@@ -95,15 +95,20 @@
             NSDictionary *coub = self.currentPlaylist[index];
             NSString *title = [coub objectForKey:@"title"];
             NSURL *pictureURL = [NSURL URLWithString:[coub objectForKey:@"small_picture"]];
-            NSDictionary *user = [coub objectForKey:@"user"];
-            NSString *username = [user objectForKey:@"name"];
-            NSURL *userPicture = [user objectForKey:@"small_avatar"];
+            NSDictionary *channel = [coub objectForKey:@"channel"];
+            NSString *channelTitle = [channel objectForKey:@"title"];
+            NSURL *channelPictureURL = [NSURL URLWithString:
+                                 [[
+                                    [channel objectForKey:@"avatar_versions"] objectForKey:@"template"]
+                                  stringByReplacingOccurrencesOfString:@"%{version}" withString:@"tiny"] ];
+            
+            
             long likes_count = [[coub objectForKey:@"likes_count"] longValue];
             long recoubs_count = [[coub objectForKey:@"recoubs_count"] longValue];
             
             // coub picture
             UIImageView *coubPicture = [[UIImageView alloc] init];
-            [coubPicture setImageWithURL:pictureURL placeholderImage:[UIImage imageNamed:@"image_placeholder.png"]];
+            [coubPicture sd_setImageWithURL:pictureURL placeholderImage:[UIImage imageNamed:@"image_placeholder.png"]];
             [coubPicture setFrame:CGRectMake(20, 20, 80, 60)];
             coubPicture.layer.borderColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1].CGColor;
             coubPicture.layer.borderWidth = 5.0;
@@ -126,13 +131,13 @@
             
             // author picture
             UIImageView *authorPicture = [[UIImageView alloc] init];
-            [authorPicture setImageWithURL:userPicture placeholderImage:[UIImage imageNamed:@"image_placeholder.png"]];
+            [authorPicture sd_setImageWithURL:channelPictureURL placeholderImage:[UIImage imageNamed:@"image_placeholder.png"]];
             [authorPicture setFrame:CGRectMake(120, 50, 20, 20)];
             [cell addSubview:authorPicture];
             
             // author name
             UILabel *authorName = [[UILabel alloc] initWithFrame:CGRectMake(150, 58, 0, 0)];
-            authorName.text = username;
+            authorName.text = channelTitle;
             authorName.textColor = [UIColor whiteColor];
             authorName.font = [UIFont fontWithName:@"Helvetica" size:12];
             [authorName sizeToFit];

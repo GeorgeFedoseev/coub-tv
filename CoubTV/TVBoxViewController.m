@@ -27,11 +27,7 @@
         
         
         
-        self.clickSound = [[AVAudioPlayer alloc] initWithContentsOfURL:
-                           [NSURL URLWithString:
-                            [[NSBundle mainBundle]
-                             pathForResource:@"click" ofType:@"mp3"]] error:nil];
-        [self.clickSound setVolume:.2];
+        
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(videoDownloadPercentageChange:)
@@ -53,10 +49,17 @@
 {
     [super viewDidLoad];
     
+    
+    self.clickSound = [[AVAudioPlayer alloc] initWithContentsOfURL:
+                       [NSURL URLWithString:
+                        [[NSBundle mainBundle]
+                         pathForResource:@"click" ofType:@"mp3"]] error:nil];
+    [self.clickSound setVolume:.2];
+    
     self.mvc = (MainViewController *)self.parentViewController;
     BOOL channels_and_search_unlocked = [[self.mvc getIcloudUserDataForKey:@"channels_and_search_unlocked"] boolValue]
                                             || [[self.mvc getLocalUserDataForKey:@"channels_and_search_unlocked"] boolValue];
-    //channels_and_search_unlocked = NO;
+    channels_and_search_unlocked = YES;
     
     // EFFECTS
 #pragma mark Effects
@@ -410,7 +413,7 @@
     
     
     // channel button
-    self.channelButton = [[UIView alloc] initWithFrame:CGRectMake(340, 0, 112, 30)];
+    /*self.channelButton = [[UIView alloc] initWithFrame:CGRectMake(340, 0, 112, 30)];
     
     UIImageView *channelIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"channels.png"]];
     [channelIcon setFrame:CGRectMake(5, 5, 25, 20)];
@@ -431,9 +434,9 @@
     self.channelButton.userInteractionEnabled = YES;
     UITapGestureRecognizer *channelTapRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(channelButtonTap:)];
     [self.channelButton addGestureRecognizer:channelTapRec];
-    
+    */
     // search button
-    self.searchButton = [[UIView alloc] initWithFrame:CGRectMake(460, 0, 97, 30)];
+    self.searchButton = [[UIView alloc] initWithFrame:CGRectMake(340, 0, 97, 30)];
     
     UIImageView *searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"search.png"]];
     [searchIcon setFrame:CGRectMake(5, 5, 20, 20)];
@@ -466,7 +469,7 @@
         
     if(channels_and_search_unlocked){
         self.searchButton.hidden = NO;
-        self.channelButton.hidden = NO;
+        self.channelButton.hidden = YES;
     }else{
         self.searchButton.hidden = YES;
         self.channelButton.hidden = YES;

@@ -80,9 +80,12 @@
             [store synchronize];
             
             // get icloud user data
-            self.icloudUserData = [
-                                   [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUbiquitousKeyValueStore defaultStore] objectForKey:@"userData"]]
-                                   mutableCopy];
+            
+            
+            self.icloudUserData = [[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUbiquitousKeyValueStore defaultStore] objectForKey:@"userData"]]
+                                    mutableCopy];
+            
+            //self.icloudUserData = [[[NSUbiquitousKeyValueStore defaultStore] objectForKey:@"userData"] mutableCopy];
             
         }
         
@@ -99,7 +102,7 @@
         
         
         // LOCAL USER DATA
-        self.localUserData = [[NSUserDefaults standardUserDefaults] objectForKey:@"userData"];
+        self.localUserData = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userData"] mutableCopy];
         if(!self.localUserData){
             NSLog(@"No userdata in local staorage. Init it.");
             self.localUserData = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -207,7 +210,9 @@
 
 - (void) icloudStoreDidChange: (NSNotification *) notification
 {
-    self.icloudUserData = [[NSUbiquitousKeyValueStore defaultStore] objectForKey:@"userData"];
+    //self.icloudUserData = [[[NSUbiquitousKeyValueStore defaultStore] objectForKey:@"userData"] mutableCopy];
+    self.icloudUserData = [[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUbiquitousKeyValueStore defaultStore] objectForKey:@"userData"]]
+                           mutableCopy];
 }
 
 // LOCAL USER DATA
@@ -633,7 +638,7 @@
     NSData *jsonData = [NSURLConnection sendSynchronousRequest:req returningResponse:nil error:&grabPageError];
     
     if(grabPageError){
-        NSLog(@"Error when loading coubs page");
+        NSLog(@"Error when loading coubs page: %@", grabPageError.localizedDescription);
         return nil;
     }
     

@@ -190,21 +190,28 @@ char *stateNames[] = {"IDLE", "ONTHEWAY", "PLAYING", "LOADING",
        
         
         
-        NSURL *videoUrl = [NSURL URLWithString:[coub objectForKey:@"file"]];
-        NSURL *audioUrl;
+       // NSURL *videoUrl = [NSURL URLWithString:[coub objectForKey:@"gifv"]];
+        
+       // NSLog(@"video url str: %@", videoUrl);
+        
+       // NSURL *audioUrl;
         
         
-        NSDictionary *mobile = [[coub objectForKey:@"file_versions"] objectForKey:@"mobile"];
-        NSString *audioUrlStr = [mobile objectForKey:@"audio_url"];
-        NSLog(@"%@", audioUrlStr);
-        if(audioUrlStr != (id)[NSNull null]){
-            audioUrl = [NSURL URLWithString:[mobile objectForKey:@"audio_url"]];
+        NSDictionary *integrations = [[coub objectForKey:@"file_versions"] objectForKey:@"integrations"];
+        NSString *videoUrlStr = [integrations objectForKey:@"ifunny_video"];
+        NSLog(@"video url str: %@", videoUrlStr);
+        
+        NSURL *videoUrl = [NSURL URLWithString:videoUrlStr];
+
+        
+        /*if(audioUrlStr != (id)[NSNull null]){
+            audioUrl = [NSURL URLWithString:[mobile objectForKey:@"looped_audio"]];
             self.noSound = NO;
         }else{
             self.noSound = YES;
-        }
+        }*/
         
-        
+        self.noSound = YES;
         
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"videoLoadingComplete" object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"audioLoadingComplete" object:nil];
@@ -220,15 +227,15 @@ char *stateNames[] = {"IDLE", "ONTHEWAY", "PLAYING", "LOADING",
         [videoDownloadConnection start];
         
         
-        if(!self.noSound){
+        /*if(!self.noSound){
             // cache audio
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(audioLoadingComplete:)
                                                          name:@"audioLoadingComplete" object:nil];
             [self performSelectorInBackground:@selector(preloadAudioWithUrl:) withObject: audioUrl];
-        }else{
+        }else{*/
             self.state = CoubTVStateAudioLoadingComplete;
-        }
+        /*}*/
         
         return YES;
     }
@@ -257,7 +264,7 @@ char *stateNames[] = {"IDLE", "ONTHEWAY", "PLAYING", "LOADING",
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"VIDEO DOWNLOAD ERROR. Starting NEXT");
+    NSLog(@"VIDEO DOWNLOAD ERROR: %@. Starting NEXT", error.localizedDescription);
     [self setState:CoubTVStateLoading];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"next" object:self];
 }
@@ -321,7 +328,7 @@ char *stateNames[] = {"IDLE", "ONTHEWAY", "PLAYING", "LOADING",
     NSData *audioData = notification.object;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *path = [paths[0] stringByAppendingPathComponent:@"cachedAudio.mp4"];
+    NSString *path = [paths[0] stringByAppendingPathComponent:@"cachedAudio.mp3"];
     
     [audioData writeToFile:path atomically:NO];
     NSLog(@"caching audio complete to %@", path);
@@ -363,6 +370,7 @@ char *stateNames[] = {"IDLE", "ONTHEWAY", "PLAYING", "LOADING",
     //AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:videoURL];
     AVPlayer* mp = [AVPlayer playerWithPlayerItem:playerItem];
     mp.muted = audioURL?YES:NO;
+    //mp.muted = NO;
     
     
     // Add the player to your UserInterface
