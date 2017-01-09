@@ -1061,22 +1061,31 @@
             
             self.shareNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
             self.shareNavigationController.modalPresentationStyle
-                                    = UIModalPresentationPageSheet;
+                                    = UIModalPresentationFormSheet;
+            
             
             UIBarButtonItem *doneButton = [[UIBarButtonItem alloc ]
                                            initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                            target:self action:@selector(doneShare:)];
             
             webViewController.navigationItem.rightBarButtonItem = doneButton;
+            webViewController.navigationItem.title = @"Share";
             
-            [self presentViewController:self.shareNavigationController animated:YES completion:^{
-                NSURL* url = [NSURL URLWithString:urlStr];
-                NSURLRequest* request = [NSURLRequest requestWithURL:url];
-                [webView loadRequest:request];
-            }];
+            
+            [self dismissViewControllerAnimated:NO completion:nil];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:self.shareNavigationController animated:YES completion:^{
+                    NSURL* url = [NSURL URLWithString:urlStr];
+                    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+                    [webView loadRequest:request];
+                }];
+            });
+            
 
         }
     }
+    
     
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.2);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
