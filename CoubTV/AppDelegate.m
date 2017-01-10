@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @implementation AppDelegate
 
@@ -19,7 +22,11 @@
     [self.window makeKeyAndVisible];
     
     MainViewController *mvc = [[MainViewController alloc] init];
-    self.window.rootViewController = mvc;    
+    self.window.rootViewController = mvc;
+    
+    
+    [Fabric with:@[[Crashlytics class]]];
+
     
     return YES;
 }

@@ -24,6 +24,8 @@
 		5E5F187818A925AC0011D206 /* channel_feature.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5F187618A925AC0011D206 /* channel_feature.png */; };
 		5E5F187B18A927860011D206 /* search_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5F187A18A927860011D206 /* search_gray.png */; };
 		5E5F187F18A929D50011D206 /* search_feature.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E5F187E18A929D50011D206 /* search_feature.png */; };
+		5E84D3E81E245D2C00AC4251 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E84D3E61E245D2C00AC4251 /* Fabric.framework */; };
+		5E84D3E91E245D2C00AC4251 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E84D3E71E245D2C00AC4251 /* Crashlytics.framework */; };
 		5E8521A01E2435A500FDE5DD /* FLAnimatedImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8521781E2435A400FDE5DD /* FLAnimatedImageView+WebCache.m */; };
 		5E8521A11E2435A500FDE5DD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E85217A1E2435A400FDE5DD /* MKAnnotationView+WebCache.m */; };
 		5E8521A21E2435A500FDE5DD /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E85217C1E2435A400FDE5DD /* NSData+ImageContentType.m */; };
@@ -49,7 +51,6 @@
 		5E8521BC1E24368700FDE5DD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E8521B91E24368700FDE5DD /* Info.plist */; };
 		5E8521BD1E24369B00FDE5DD /* FLAnimatedImage.h in Sources */ = {isa = PBXBuildFile; fileRef = 5E8521B51E24368700FDE5DD /* FLAnimatedImage.h */; };
 		5E8521BE1E24369B00FDE5DD /* FLAnimatedImageView.h in Sources */ = {isa = PBXBuildFile; fileRef = 5E8521B71E24368700FDE5DD /* FLAnimatedImageView.h */; };
-		5E8521C01E244B5A00FDE5DD /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8521BF1E244B5A00FDE5DD /* Launch Screen.storyboard */; };
 		5E96BA8719229FB500F59384 /* ShareTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E96BA8619229FB500F59384 /* ShareTableViewController.m */; };
 		5E96CA3418A51CD3006B95A0 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E96CA3318A51CD3006B95A0 /* more.png */; };
 		5E96CA3718A5228F006B95A0 /* hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E96CA3518A5228F006B95A0 /* hot.png */; };
@@ -120,6 +121,8 @@
 		5E5F187618A925AC0011D206 /* channel_feature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = channel_feature.png; sourceTree = "<group>"; };
 		5E5F187A18A927860011D206 /* search_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_gray.png; sourceTree = "<group>"; };
 		5E5F187E18A929D50011D206 /* search_feature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_feature.png; sourceTree = "<group>"; };
+		5E84D3E61E245D2C00AC4251 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		5E84D3E71E245D2C00AC4251 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5E8521771E2435A400FDE5DD /* FLAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
 		5E8521781E2435A400FDE5DD /* FLAnimatedImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImageView+WebCache.m"; sourceTree = "<group>"; };
 		5E8521791E2435A400FDE5DD /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -166,7 +169,6 @@
 		5E8521B71E24368700FDE5DD /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
 		5E8521B81E24368700FDE5DD /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
 		5E8521B91E24368700FDE5DD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E8521BF1E244B5A00FDE5DD /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5E96BA8519229FB500F59384 /* ShareTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewController.h; sourceTree = "<group>"; };
 		5E96BA8619229FB500F59384 /* ShareTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewController.m; sourceTree = "<group>"; };
 		5E96CA3318A51CD3006B95A0 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
@@ -234,6 +236,8 @@
 				5EA07A3E18A11AB600EAF9E8 /* CoreGraphics.framework in Frameworks */,
 				5EA07A4018A11AB600EAF9E8 /* UIKit.framework in Frameworks */,
 				5EA07A3C18A11AB600EAF9E8 /* Foundation.framework in Frameworks */,
+				5E84D3E91E245D2C00AC4251 /* Crashlytics.framework in Frameworks */,
+				5E84D3E81E245D2C00AC4251 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +364,8 @@
 		5EA07A2F18A11AB600EAF9E8 = {
 			isa = PBXGroup;
 			children = (
+				5E84D3E61E245D2C00AC4251 /* Fabric.framework */,
+				5E84D3E71E245D2C00AC4251 /* Crashlytics.framework */,
 				5E5742F418AA6C8500F53AB4 /* Reachability */,
 				5EA07A4118A11AB600EAF9E8 /* CoubTV */,
 				5EA07A3A18A11AB600EAF9E8 /* Frameworks */,
@@ -434,7 +440,6 @@
 				5E9F26EC18A42BCD00226987 /* Icons */,
 				5EA07A4D18A11AB600EAF9E8 /* Images.xcassets */,
 				5EA07A4218A11AB600EAF9E8 /* Supporting Files */,
-				5E8521BF1E244B5A00FDE5DD /* Launch Screen.storyboard */,
 			);
 			path = CoubTV;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				5EA07A3418A11AB600EAF9E8 /* Sources */,
 				5EA07A3518A11AB600EAF9E8 /* Frameworks */,
 				5EA07A3618A11AB600EAF9E8 /* Resources */,
+				5E84D3E51E245D0D00AC4251 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -594,7 +600,6 @@
 				5E96CA3C18A5265F006B95A0 /* search.png in Resources */,
 				5E9F26FC18A442DB00226987 /* favourite_active.png in Resources */,
 				5E96CA7918A6CFEB006B95A0 /* image_placeholder.png in Resources */,
-				5E8521C01E244B5A00FDE5DD /* Launch Screen.storyboard in Resources */,
 				5EA07A4E18A11AB600EAF9E8 /* Images.xcassets in Resources */,
 				5E5742FF18AA7D0200F53AB4 /* info_icon.png in Resources */,
 				5E9F26F618A42D9600226987 /* restart.png in Resources */,
@@ -609,6 +614,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E84D3E51E245D0D00AC4251 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 9904da5eb8bc9651aae0ab5611c7d808dff6cb13 70bbf47f560bded833fe521806ecdfaa708b1a8fe9a0c9655c770781a7d06d1d";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5EA07A3418A11AB600EAF9E8 /* Sources */ = {
@@ -763,6 +784,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = CoubTV/CoubTV.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -771,6 +793,7 @@
 					"$(inherited)",
 					/Users/George/Developer/CoubTV,
 					"/Users/George/Desktop/ShareKit-master/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoubTV/CoubTV-Prefix.pch";
@@ -794,6 +817,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = CoubTV/CoubTV.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -802,6 +826,7 @@
 					"$(inherited)",
 					/Users/George/Developer/CoubTV,
 					"/Users/George/Desktop/ShareKit-master/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoubTV/CoubTV-Prefix.pch";
